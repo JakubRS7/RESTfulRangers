@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import io.swagger.annotations.Api;
+import org.example.exceptions.DoesNotExistException;
 import org.example.models.DeliveryEmployeeRequest;
 import org.example.models.Employee;
 import org.example.services.DeliveryEmployeeService;
@@ -38,7 +39,6 @@ public class EmployeeController {
             System.out.println(e.getMessage());
             return Response.serverError().build();
         }
-
     }
 
 }
