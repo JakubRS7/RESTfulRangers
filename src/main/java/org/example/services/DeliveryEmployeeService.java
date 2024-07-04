@@ -1,0 +1,20 @@
+package org.example.services;
+
+import org.example.daos.DeliveryEmployeeDao;
+import org.example.exceptions.InvalidDataException;
+import org.example.models.DeliveryEmployeeRequest;
+
+import java.sql.SQLException;
+
+public class DeliveryEmployeeService {
+
+    private DeliveryEmployeeDao delEmpDao;
+
+    public DeliveryEmployeeService(DeliveryEmployeeDao delEmpDao) {
+        this.delEmpDao = delEmpDao;
+    }
+
+    public int createDeliveryEmployee(DeliveryEmployeeRequest deliveryEmployeeRequest) throws SQLException, InvalidDataException {
+        return delEmpDao.createDeliveryEmployee(deliveryEmployeeRequest);
+    }
+}
