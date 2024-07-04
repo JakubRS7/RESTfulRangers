@@ -1,5 +1,5 @@
 CREATE TABLE project (
-    project_Id smallint PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    project_id smallint PRIMARY KEY AUTO_INCREMENT NOT NULL,
     project_name varchar(50),
     project_value decimal(11, 2),
     client_name varchar(30)
