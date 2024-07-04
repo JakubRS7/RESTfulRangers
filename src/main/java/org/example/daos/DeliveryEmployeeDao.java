@@ -14,7 +14,7 @@ public class DeliveryEmployeeDao {
 
         Connection c = DatabaseConnector.getConnection();
 
-        String insertStatement = "INSERT INTO employee (name, salary, bankNumber, nationalInsuranceNo) VALUES (?,?,?,?);";
+        String insertStatement = "INSERT INTO employee (name, salary, bankNumber, nationalInsuranceNo, role_id) VALUES (?,?,?,?, 1);";
 
         PreparedStatement st = c.prepareStatement(insertStatement, PreparedStatement.RETURN_GENERATED_KEYS);
 
