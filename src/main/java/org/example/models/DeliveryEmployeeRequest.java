@@ -2,6 +2,8 @@ package org.example.models;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.example.exceptions.Entity;
+import org.example.exceptions.InvalidDataException;
 
 public class DeliveryEmployeeRequest {
 
@@ -14,11 +16,11 @@ public class DeliveryEmployeeRequest {
     public DeliveryEmployeeRequest(@JsonProperty("name") String name,
                                    @JsonProperty("salary") double salary,
                                    @JsonProperty("bankNumber") String bankNumber,
-                                   @JsonProperty("nationalInsuranceNumber") String nationalInsuranceNumber) {
-        this.name = name;
-        this.salary = salary;
-        this.bankNumber = bankNumber;
-        this.nationalInsuranceNumber = nationalInsuranceNumber;
+                                   @JsonProperty("nationalInsuranceNumber") String nationalInsuranceNumber) throws InvalidDataException {
+        this.setName(name);
+        this.setSalary(salary);
+        this.setBankNumber(bankNumber);
+        this.setNationalInsuranceNumber(nationalInsuranceNumber);
     }
 
 
@@ -26,7 +28,7 @@ public class DeliveryEmployeeRequest {
         return nationalInsuranceNumber;
     }
 
-    public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
+    public void setNationalInsuranceNumber(String nationalInsuranceNumber) throws InvalidDataException {
         if (nationalInsuranceNumber == null || nationalInsuranceNumber.length() != 9) {
             System.out.println("Invalid length of national insurance number");
 
@@ -47,6 +49,8 @@ public class DeliveryEmployeeRequest {
                 }
                 this.nationalInsuranceNumber = nationalInsuranceNumber;
             }
+        } else {
+            throw new InvalidDataException(Entity.EMPLOYEE);
         }
     }
 
@@ -54,10 +58,12 @@ public class DeliveryEmployeeRequest {
         return bankNumber;
     }
 
-    public void setBankNumber(String bankNumber) {
+    public void setBankNumber(String bankNumber) throws InvalidDataException {
         //validation code, max digits 34
         if(bankNumber != null && bankNumber.length() <= 34) {
             this.bankNumber = bankNumber;
+        }else {
+            throw new InvalidDataException(Entity.EMPLOYEE);
         }
     }
 
@@ -65,10 +71,12 @@ public class DeliveryEmployeeRequest {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(double salary) throws InvalidDataException {
         //ensure the number isn't negative
         if(salary >= 0) {
             this.salary = salary;
+        } else {
+            throw new InvalidDataException(Entity.EMPLOYEE);
         }
     }
 
@@ -76,10 +84,12 @@ public class DeliveryEmployeeRequest {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws InvalidDataException {
         //add max length validation - 255 characters
         if(name != null && name.length() <= 255) {
             this.name = name;
+        }else {
+            throw new InvalidDataException(Entity.EMPLOYEE);
         }
     }
 }

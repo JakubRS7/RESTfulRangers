@@ -15,10 +15,6 @@ public class DeliveryEmployeeService {
     }
 
     public int createDeliveryEmployee(DeliveryEmployeeRequest deliveryEmployeeRequest) throws SQLException, InvalidDataException {
-
-        int id  = delEmpDao.createDeliveryEmployee(deliveryEmployeeRequest);
-
-        return id;
-
+        return delEmpDao.createDeliveryEmployee(deliveryEmployeeRequest);
     }
 }
