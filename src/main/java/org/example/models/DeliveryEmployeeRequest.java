@@ -1,13 +1,25 @@
 package org.example.models;
 
-//abstract class since no Employee objects are ever created
-public abstract class Employee {
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    private int id;
+public class DeliveryEmployeeRequest {
+
     private String name;
     private double salary;
     private String bankNumber;
     private String nationalInsuranceNumber;
+
+    @JsonCreator
+    public DeliveryEmployeeRequest(@JsonProperty("name") String name,
+                                   @JsonProperty("salary") double salary,
+                                   @JsonProperty("bankNumber") String bankNumber,
+                                   @JsonProperty("nationalInsuranceNumber") String nationalInsuranceNumber) {
+        this.name = name;
+        this.salary = salary;
+        this.bankNumber = bankNumber;
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
+    }
 
 
     public String getNationalInsuranceNumber() {
@@ -48,14 +60,6 @@ public abstract class Employee {
         this.name = name;
     }
 
-    public Employee(int id, String name, double salary, String bankNumber, String nationalInsuranceNumber) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-        this.bankNumber = bankNumber;
-        this.nationalInsuranceNumber = nationalInsuranceNumber;
-
-    }
 
 
 
