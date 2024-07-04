@@ -2,6 +2,7 @@ package org.example.controllers;
 
 import io.swagger.annotations.Api;
 import org.example.exceptions.DoesNotExistException;
+import org.example.exceptions.InvalidDataException;
 import org.example.models.DeliveryEmployeeRequest;
 import org.example.models.Employee;
 import org.example.services.DeliveryEmployeeService;
@@ -38,6 +39,8 @@ public class EmployeeController {
         } catch (SQLException e){
             System.out.println(e.getMessage());
             return Response.serverError().build();
+        } catch (InvalidDataException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }
     }
 

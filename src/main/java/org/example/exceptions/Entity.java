@@ -2,7 +2,7 @@ package org.example.exceptions;
 
 public enum Entity {
 
-    ORDER("Order"),
+    EMPLOYEE("Employee"),
     PRODUCT("Product");
 
     private final String entity;

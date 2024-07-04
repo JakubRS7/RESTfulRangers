@@ -27,10 +27,27 @@ public class DeliveryEmployeeRequest {
     }
 
     public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
-        //Here we can put validation code to ensure the insurance number is in correct format
-        //first two characters are letters, following 6 are digits, last is a letter
-        //total length == 9
-        this.nationalInsuranceNumber = nationalInsuranceNumber;
+        if (nationalInsuranceNumber == null || nationalInsuranceNumber.length() != 9) {
+            System.out.println("Invalid length of national insurance number");
+
+            String firstTwo = nationalInsuranceNumber.substring(0, 2);
+            String middleSix = nationalInsuranceNumber.substring(2, 8);
+            char lastChar = nationalInsuranceNumber.charAt(8);
+
+            // Check first two and last are letters
+            if (!Character.isLetter(firstTwo.charAt(0)) || !Character.isLetter(firstTwo.charAt(1)) || !Character.isLetter(lastChar)) {
+                System.out.println("Invalid format of national insurance number");
+                ;
+
+                // Check middle six digits
+                for (int i = 0; i < 6; i++) {
+                    if (!Character.isDigit(middleSix.charAt(i))) {
+                        System.out.println("Invalid format of national insurance number");
+                    }
+                }
+                this.nationalInsuranceNumber = nationalInsuranceNumber;
+            }
+        }
     }
 
     public String getBankNumber() {
@@ -39,7 +56,9 @@ public class DeliveryEmployeeRequest {
 
     public void setBankNumber(String bankNumber) {
         //validation code, max digits 34
-        this.bankNumber = bankNumber;
+        if(bankNumber != null && bankNumber.length() <= 34) {
+            this.bankNumber = bankNumber;
+        }
     }
 
     public double getSalary() {
@@ -48,7 +67,9 @@ public class DeliveryEmployeeRequest {
 
     public void setSalary(double salary) {
         //ensure the number isn't negative
-        this.salary = salary;
+        if(salary >= 0) {
+            this.salary = salary;
+        }
     }
 
     public String getName() {
@@ -57,11 +78,8 @@ public class DeliveryEmployeeRequest {
 
     public void setName(String name) {
         //add max length validation - 255 characters
-        this.name = name;
+        if(name != null && name.length() <= 255) {
+            this.name = name;
+        }
     }
-
-
-
-
-
 }
