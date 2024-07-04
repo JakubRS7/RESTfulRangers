@@ -14,7 +14,7 @@ public class DeliveryEmployeeDao {
 
         Connection c = DatabaseConnector.getConnection();
 
-        String insertStatement = "INSERT INTO employee (name, salary, bankNumber, nationalInsuranceNo) VALUES (?,?,?,?);";
+        String insertStatement = "INSERT INTO employee (name, salary, bankNumber, nationalInsuranceNo, role_id) VALUES (?,?,?,?,?);";
 
         PreparedStatement st = c.prepareStatement(insertStatement, PreparedStatement.RETURN_GENERATED_KEYS);
 
@@ -22,7 +22,6 @@ public class DeliveryEmployeeDao {
         st.setDouble(2, deliveryEmployee.getSalary());
         st.setString(3, deliveryEmployee.getBankNumber());
         st.setString(4, deliveryEmployee.getNationalInsuranceNumber());
-
 
         st.executeUpdate();
 

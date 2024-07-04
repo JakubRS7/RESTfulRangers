@@ -7,7 +7,7 @@ CREATE TABLE employee (
     role_id smallint
 );
 
-INSERT INTO employee (name, salary, bankNumber, nationalInsuranceNo) VALUES
+INSERT INTO employee (name, salary, bankNumber, nationalInsuranceNo, role_id) VALUES
 ("Alison Short", 25000, "98549690", "HN820228C", 1 ),
 ("Lia Vang", 38000, "44925738", "DF735106F", 1),
 ("Lance Snyder", 27400, "98712789", "BR936291G", 1),
