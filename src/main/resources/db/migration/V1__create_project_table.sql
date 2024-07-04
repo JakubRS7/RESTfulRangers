@@ -1,4 +1,4 @@
-CREATE TABLE Project (
+CREATE TABLE project (
     project_Id smallint PRIMARY KEY AUTO_INCREMENT NOT NULL,
     project_name varchar(50),
     project_value decimal(11, 2),
