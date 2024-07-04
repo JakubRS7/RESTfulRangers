@@ -15,7 +15,7 @@ import javax.xml.transform.Result;
 import java.awt.*;
 import java.sql.SQLException;
 
-@Api("Delivery Employee API")
+@Api("Employee API")
 @Path("api/employees")
 public class EmployeeController {
 
@@ -23,14 +23,6 @@ public class EmployeeController {
 
     public EmployeeController(DeliveryEmployeeService deliveryEmployeeService) {
         this.deliveryEmployeeService = deliveryEmployeeService;
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getEmployees() {
-
-        return Response.ok().entity("List of Employees").build();
-
     }
 
     @POST

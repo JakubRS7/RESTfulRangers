@@ -18,14 +18,10 @@ public class DeliveryEmployeeDao {
 
         PreparedStatement st = c.prepareStatement(insertStatement, PreparedStatement.RETURN_GENERATED_KEYS);
 
-
-
         st.setString(1, deliveryEmployee.getName());
         st.setDouble(2, deliveryEmployee.getSalary());
         st.setString(3, deliveryEmployee.getBankNumber());
         st.setString(4, deliveryEmployee.getNationalInsuranceNumber());
-
-
 
 
         st.executeUpdate();
